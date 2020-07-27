@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_213024) do
+
+ActiveRecord::Schema.define(version: 2020_07_27_222130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "professional_id"
+    t.date "appointment_date"
+    t.integer "start_hour"
+    t.string "status"
+    t.integer "session_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_appointments_on_client_id"
+    t.index ["professional_id"], name: "index_appointments_on_professional_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "school"
@@ -24,6 +38,16 @@ ActiveRecord::Schema.define(version: 2020_07_27_213024) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "appointment_id", null: false
+    t.integer "rating_sharp"
+    t.integer "rating_qualityprice"
+    t.integer "rating_facilities"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_reviews_on_appointment_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_213024) do
     t.string "available_at"
     t.string "first_name"
     t.string "last_name"
-    t.string "password"
     t.string "address"
     t.string "cel_phone"
     t.string "dni"
@@ -46,4 +69,5 @@ ActiveRecord::Schema.define(version: 2020_07_27_213024) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "appointments"
 end
