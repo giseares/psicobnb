@@ -15,6 +15,19 @@ ActiveRecord::Schema.define(version: 2020_07_27_221956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "professional_id"
+    t.date "appointment_date"
+    t.integer "start_hour"
+    t.string "status"
+    t.integer "session_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_appointments_on_client_id"
+    t.index ["professional_id"], name: "index_appointments_on_professional_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "school"
     t.string "license_number"
