@@ -1,0 +1,9 @@
+<h1>Hola!</h1>
+<h2>Aqui tienes todos los psicos:</h2>
+<%@users.each do |psico|%>
+    <div class="card m-2 p-2">
+    <h1><%=psico.first_name%> <%=psico.last_name%></h1>
+    <p><%=psico.cel_phone%></p>
+    <p><%=psico.address%></p>
+    </div>
+<%end%>
