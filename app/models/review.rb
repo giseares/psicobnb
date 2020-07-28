@@ -1,3 +1,3 @@
 class Review < ApplicationRecord
-  belongs_to :appointment_id
+  belongs_to :appointment
 end

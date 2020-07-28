@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/julianoviedo1/code/giseares/psicobnb/db/seeds.rb:27 :
+
+    [1;34m22[0m:   p c_users
+    [1;34m23[0m: [32mend[0m
+    [1;34m24[0m: [1;34m15[0m.times [32mdo[0m
+    [1;34m25[0m:   appointment = [1;34;4mAppointment[0m.new([35mappointment_date[0m: [1;34;4mFaker[0m::[1;34;4mDate[0m.in_date_period, [35mstart_hour[0m: [1;34m18[0m, [35mstatus[0m: [31m[1;31m"[0m[31mpendiente de confirm[1;31m"[0m[31m[0m, [35msession_price[0m: [1;34m600[0m)
+    [1;34m26[0m:   binding.pry
+ => [1;34m27[0m:   appointment.client_id = [1;34;4mUser[0m.where([35mprofessional[0m: [1;36mfalse[0m).sample.id [1;34m# ver[0m
+    [1;34m28[0m:   appointment.professional_id = [1;34;4mUser[0m.where([35mprofessional[0m: [1;36mtrue[0m).sample.id
+    [1;34m29[0m:   appointment.save!
+    [1;34m30[0m: [32mend[0m
+    [1;34m31[0m: [1;34m15[0m.times [32mdo[0m 
+    [1;34m32[0m:   review = [1;34;4mReview[0m.new([35mrating_sharp[0m: [[1;34m1[0m,[1;34m2[0m,[1;34m3[0m,[1;34m4[0m,[1;34m5[0m].sample, [35mrating_facilities[0m: [[1;34m1[0m,[1;34m2[0m,[1;34m3[0m,[1;34m4[0m,[1;34m5[0m].sample, [35mrating_qualityprice[0m: [[1;34m1[0m,[1;34m2[0m,[1;34m3[0m,[1;34m4[0m,[1;34m5[0m].sample)
+

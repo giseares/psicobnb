@@ -5,3 +5,61 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+3.times do
+  p_users = User.new(email: Faker::Internet.email, professional: true, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
+  p_users.save!
+  profile = Profile.new(school: Faker::Educator.university, license_number:  Faker::Number.number(digits: 6), speciality: "familia", price: 600)
+  profile.user_id = p_users.id
+  profile.save!
+  p p_users
+  p profile
+end
+8.times do
+  c_users = User.new(email: Faker::Internet.email, professional: false, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
+  c_users.save!
+  p c_users
+end
+15.times do
+  appointment = Appointment.new(appointment_date: Faker::Date.in_date_period, start_hour: 18, status: "pendiente de confirm", session_price: 600)
+  appointment.client_id = User.where(professional: false).sample.id # ver
+  appointment.professional_id = User.where(professional: true).sample.id
+  appointment.save!
+end
+15.times do 
+  review = Review.new(rating_sharp: [1,2,3,4,5].sample, rating_facilities: [1,2,3,4,5].sample, rating_qualityprice: [1,2,3,4,5].sample)
+  review.appointment_id = Appointment.all.sample.id
+  review.save!
+end
+
+# user ------------------------
+# email
+# t.string "encrypted_password", default: "", null: false
+# t.string "available_at"
+# t.string "first_name"
+# t.string "last_name"
+# t.string "address"
+# t.string "cel_phone"
+# t.string "dni"
+#-------------------------------
+# appointment ------------------------
+# t.bigint "client_id"
+# t.bigint "professional_id"
+# t.date "appointment_date"
+# t.integer "start_hour"
+# t.string "status"
+# t.integer "session_price"
+#-------------------------------
+# profile ------------------------
+# t.string "school"
+# t.string "license_number"
+# t.string "speciality"
+# t.integer "price"
+# t.bigint "user_id"
+#-------------------------------
+# profile ------------------------
+# t.bigint "appointment_id", null: false
+# t.integer "rating_sharp"
+# t.integer "rating_qualityprice"
+# t.integer "rating_facilities"
+#-------------------------------
