@@ -2,7 +2,11 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show edit create update ]
 
   def index
-    @reviews = Review.all
+    if current_user.professional?
+      @reviews = Review.all.select {|review| review.appointment.professional == current_user }
+    else
+      @reviews = Review.all.select {|review| review.appointment.client == current_user }
+    end
   end
   
   def show
