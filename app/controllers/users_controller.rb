@@ -8,4 +8,10 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def profile
+    @profile = Profile.find_by user_id: params[:user_id]
+    @user = User.find(@profile.user_id)
+    authorize @user
+  end
 end
