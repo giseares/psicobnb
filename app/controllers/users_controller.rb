@@ -9,4 +9,10 @@ class UsersController < ApplicationController
   def index
     @users =  policy_scope(User.where(professional: true)).order(created_at: :desc)
   end
+
+  def profile
+    @profile = Profile.find_by user_id: params[:user_id]
+    @user = User.find(@profile.user_id)
+    authorize @user
+  end
 end
