@@ -1,5 +1,4 @@
 <h1>User#show</h1>
- <% if user_signed_in? %>
-    <h1>Bienvenido <%= @user.email %></h1>
-  <% end %>
+<h1>Bienvenido <%= @user.email %></h1>
 
+<%= link_to "Completar perfil", user_profile_path(@user) %>

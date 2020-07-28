@@ -12,4 +12,8 @@ class UserPolicy < ApplicationPolicy
   def create?
     return false
   end
+
+  def profile?
+    user == record
+  end
 end
