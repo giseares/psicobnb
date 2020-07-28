@@ -1,0 +1,20 @@
+<div class="container">
+
+  <h3>Vistas de todas las reviews de PROFESIONAL : <%= current_user.professional %>  </h3>
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+      <hr>
+      <div class="list-group-item">
+        <%= review%>
+        <li>Rating Sharp: <%= review.rating_sharp %></li>
+        <li>Rating Qualily/Price <%= review.rating_qualityprice %></li>
+        <li>Ratig Facilities <%= review.rating_facilities %></li>
+      </div>
+    <% end %>
+  
+      
+        
+  </ul>
+  
+
+</div>
