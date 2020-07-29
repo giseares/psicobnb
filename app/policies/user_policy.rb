@@ -7,7 +7,6 @@ class UserPolicy < ApplicationPolicy
 
   def show?
     true
-    # user == record
   end
 
   def create?
@@ -19,6 +18,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update_profile?
-    user == record
+    record.professional
   end
 end
