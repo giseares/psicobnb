@@ -12,8 +12,7 @@ class UsersController < ApplicationController
 
   def profile
     @profile = Profile.find_by user_id: params[:user_id]
-    @user = User.find(@profile.user_id)
-    authorize @user
+    authorize @profile.user
   end
 
   def update_profile
