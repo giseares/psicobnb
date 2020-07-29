@@ -21,8 +21,14 @@ class UsersController < ApplicationController
         query = "school LIKE '%#{params[:school]}%'"
         @profiles = Profile.where(query)
       end
-      @profiles.each do |profile|
-        @users.push(policy_scope(User.where(id: profile.user_id)).order(created_at: :desc))
+
+      if @profiles.empty?
+        @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
+        redirect_to users_path
+      else
+        @profiles.each do |profile|
+          @users.push(policy_scope(User.where(id: profile.user_id)).order(created_at: :desc))
+        end
       end
     else
       @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
