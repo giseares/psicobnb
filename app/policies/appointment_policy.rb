@@ -8,4 +8,12 @@ class AppointmentPolicy < ApplicationPolicy
   def index?
     user
   end
+
+  def new?
+    true
+  end
+
+  def create?
+    true
+  end
 end
