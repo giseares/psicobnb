@@ -1,11 +1,18 @@
- <h1>Appointments List </h1>
 
-<% @appointments.each do |appointment| %>
-    <h2><%= appointment.professional_id %></h2>
-    <h2><%= appointment.appointment_date %></h2>
-    <h2><%= appointment.start_hour %></h2>
-    <h2><%= appointment.status %></h2>
- <% end %>
- 
-
-
+<div class="container display: flex">
+  <h2>Mi listado </h2>
+  <div class="row">
+      <% @appointments.each do |appointment| %>
+        <div class="card">
+          <h2>Profesional: <strong> </strong></h2>
+          </h2> <p><%= appointment.professional.first_name %></p> 
+          <h2>Fecha: <strong> </strong> </h2>
+          <p><%= appointment.appointment_date %></p>
+          <h2>Hora: <strong> </strong> </h2>
+          <p><%= appointment.start_hour %></p>
+          <p><%= appointment.status %></p>
+        </div>
+      <%end%>
+      </div>
+  </div>
+</div>

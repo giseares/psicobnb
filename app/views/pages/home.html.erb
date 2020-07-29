@@ -4,13 +4,13 @@
   <div class="banner-content text-center">
     <h1>Change your mind, change your life!</h1>
     <p>Estas a un click.</p>
-    <%= form_tag appointments_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
+    <%= form_tag users_path, method: :get do %>
+    <%= text_field_tag :speciality,
+      params[:speciality],
       class: "form-control",
-      placeholder: "Ingresa tu ciudad...", id:"search"
+      placeholder: "Ingresa tu ciudad...", id: 'search'
     %>
-    <%= submit_tag "Search", class: "btn btn-primary", id:"btn-search" %>
+    <%= submit_tag "Buscar", class: "btn btn-success", id:"btn-search" %>
   <% end %>
 
   </div>

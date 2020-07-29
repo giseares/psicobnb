@@ -12,16 +12,9 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
       <li class="nav-item active">
-<<<<<<< HEAD
-          <%= link_to "Perfil", user_path(current_user.id), class: "nav-link" %>
-          <%# <%= link_to user_path(current_user.id) do %>
-          <%# <%= image_tag current_user.photo, class: "rounded-circle" %>
-          <%# <%end%>
-=======
           <%= link_to user_path(current_user.id) do %>
-            <%= image_tag current_user.photo, class: "rounded-circle" %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
           <%end%>
->>>>>>> de9d6edb3330afba50a0eca281e4c1e4693671f4
         </li>
         <li class="nav-item active">
           <%= link_to "Home", "#", class: "nav-link" %>

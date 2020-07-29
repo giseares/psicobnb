@@ -1,21 +1,25 @@
-<form class="simple_form user" action="/users" method="get">
+<div class='navbar-lewagon'>
+<%= content_for(:navbar_class, "navbar-home") %>
+</div>
+<div class="container p-5">
+  <h2>Hola! <%#= current_user.first_name%> <%#= current_user.last_name%></h2>
+</div>
+<form class="simple_form user m-3" action="/users" method="get">
   <div class="input string required user_name">
     <label class="string required" for="user_name">Escuela</label>
     <input class="string required" type="text" name="school" id="school_keys" />
     <label class="string required" for="user_name">Especialidad</label>
     <input class="string required" type="text" name="speciality" id="school_keys" />
+    <input type="submit" value="Filtrar" class="btn btn-success">
   </div>
-  <input type="submit" value="Filtrar">
 </form>
-<h1>Hola!</h1>
-<h2>Aqui tienes todos los psicos filtrados:</h2>
 <div class="mx-4">  
   <div class="row">
     <div class="col">
       <%@users.each do |psico|%>
         <%= link_to user_path(psico[0].id),{:style=>'text-decoration:none;', :class => "one"} do %>
         <div class="card-product m-2">
-          <%= image_tag psico[0].photo, class: "rounded" %>
+          <%= cl_image_tag psico[0].photo.key, class: "rounded" %>
           <div class="card-product-infos">
             <h1><%=psico[0].first_name%> <%=psico[0].last_name%></h1>
             <h5>Celular: <%=psico[0].cel_phone%></h5>

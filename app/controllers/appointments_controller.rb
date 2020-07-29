@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show edit update]
 
   def index
-    @appointments = Appointment.all
+    @appointments = policy_scope(Appointment).all
   end
 
   def show
@@ -43,5 +43,4 @@ class AppointmentsController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(:appointment_date, :start_hour, :professional_id)
   end
-
 end
