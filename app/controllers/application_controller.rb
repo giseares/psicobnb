@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :dni, :address, :cel_phone])
   end
   # La siguiente linea es para incluir Pendit para poder dar autorizacion en las paginas segun los permisos que digamos
   include Pundit
@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
-
 
   def user_not_authorized
     redirect_to(request.referrer || root_path)
