@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :reservations, foreign_key: :professional_id, class_name: "Appointment"
   after_create :create_profile
   has_one_attached :photo
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def create_profile
     profile = Profile.new(user_id: id)

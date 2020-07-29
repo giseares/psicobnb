@@ -31,8 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'autoprefixer-rails'
 #gem 'dotenv-rails', groups: [:development, :test]
 gem 'font-awesome-sass'
+gem 'geocoder'
 gem 'simple_form'
-
 gem 'pundit'
 group :development, :test do
   gem 'dotenv-rails'

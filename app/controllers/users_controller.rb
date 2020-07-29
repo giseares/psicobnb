@@ -8,6 +8,14 @@ class UsersController < ApplicationController
 
   def index
     @users =  policy_scope(User.where(professional: true)).order(created_at: :desc)
+    @users_coo = User.geocoded # returns flats with coordinates
+
+    @markers = @users_coo.map do |users_coo|
+      {
+        lat: users_coo.latitude,
+        lng: users_coo.longitude
+      }
+    end
   end
 
   def profile
