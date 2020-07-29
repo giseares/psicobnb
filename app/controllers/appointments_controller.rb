@@ -11,6 +11,7 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @user = User.find(params[:user_id])
+    authorize @appointment
   end
 
   def create
@@ -23,6 +24,7 @@ class AppointmentsController < ApplicationController
     else
       render :new
     end
+    authorize @appointment
   end
 
   def update

@@ -18,9 +18,9 @@ puts 'start seed'
   p_users.photo.attach(io: avatar, filename: "#{p_users.first_name}#{p_users.last_name}", content_type: 'image/jpg')
   #---- avatar ----
   p_users.save!
-  profile = Profile.new(school: Faker::Educator.university, license_number:  Faker::Number.number(digits: 6), speciality: "familia", price: 600)
-  profile.user_id = p_users.id
-  profile.save!
+  profile = Profile.find_by user_id: p_users.id
+  profile.update(school: Faker::Educator.university, license_number:  Faker::Number.number(digits: 6), speciality: "familia", price: 600)
+  
   p p_users
   p profile
 end

@@ -1,8 +1,14 @@
-<h1>User#show</h1>
-<h1>Bienvenido <%= @user.email %></h1>
-<%# <%= cl_image_tag @user.photo.key, class: "border-radius-4" %>
-
-
-<% if policy(@user).profile? %>
-  <%= link_to "Editar perfil profesional", user_profile_path(@user) %>
-<% end %>
+<div class="container">
+  <h1>Bienvenido <%#= current_user.first_name %></h1>
+  <%# <%= cl_image_tag @user.photo.key, class: "border-radius-4" %>
+  <% if policy(@user).profile? %>
+    <%= link_to "Editar perfil profesional", user_profile_path(@user) %>
+  <% end %>
+  <%= link_to "Reservar una cita", new_user_appointment_path(@user), class:'btn btn-success' %>
+  <h2><%=@user.first_name%></h2>
+  <h2><%=@user.last_name%></h2>
+  <h2><%=@profile.school%></h2>
+  <h2><%=@profile.speciality%></h2>
+  <h2><%=@profile.license_number%></h2>
+  <h2><%=@profile.price%></h2>
+</div>
