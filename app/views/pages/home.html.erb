@@ -1,7 +1,37 @@
-<h1>Pages#home</h1>
- <% if user_signed_in? %>
-    <h1>Bienvenido <%= current_user.first_name %></h1>
-  <% else %>
-    <h1>Bienvenido, inicia sesión!</h1>
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="banner">
+  <div class="banner-content text-center">
+    <h1>Change your mind, change your life!</h1>
+    <p>Estas a un click.</p>
+    <%= form_tag appointments_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Ingresa tu ciudad...", id:"search"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary", id:"btn-search" %>
   <% end %>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+  </div>
+</div>
+  <h2 class="my-4 text-center">Simple, facil y cómodo</h2>
+  <div class="container">
+        <div class="cards">
+      <div class="card">
+        <img src="assets/filter.png" id="img-home">
+        <h3>Filtra</h3>
+        <p>Simple y rapido desde nuestra web</p>
+      </div>
+      <div class="card">
+        <img src="assets/book.png" id="img-home">
+        <h3>Reserva</h3>
+        <p>Amplio rango horario</p>
+      </div>
+      <div class="card">
+        <img src="assets/enjoy.png" id="img-home">
+        <h3>Disfruta</h3>
+        </div>
+    </div>
+  </div>
+</div class="mb-4">

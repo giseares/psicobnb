@@ -5,6 +5,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .card-product img {
@@ -13,10 +14,11 @@
   object-fit: cover;
 }
 
-.card-product h2 {
-  font-size: 16px;
+.card-product h1 {
+  font-size: 30px;
   font-weight: bold;
-  margin: 0;
+  color: #f65c78;
+  margin: 4px;
 }
 
 .card-product p {
@@ -29,4 +31,11 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.card-product h5 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #a78a4b;
+  margin: 4px;
 }
