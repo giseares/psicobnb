@@ -1,1 +1,24 @@
 // Specific CSS for your home-page
+#home{
+  background-color: transparent;
+}
+
+#search{
+  opacity: 0.6;
+  margin-bottom: 30px;
+  height: 45px;
+  border-radius: 8px;
+}
+
+#search:hover{
+  opacity: 0.8;
+}
+
+#btn-search{
+  border-radius: 8px;
+  opacity: 0.8;
+
+  &:hover{
+    opacity: 0.9;
+  }
+}
