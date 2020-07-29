@@ -3,10 +3,10 @@
 <%@users.each do |psico|%>
   <%= link_to user_path(psico.id) do %>
   <div class="card-product m-2 p-2">
-  <img src="" alt="">
-  <h1><%=psico.first_name%> <%=psico.last_name%></h1>
-  <p>Celular: <%=psico.cel_phone%></p>
-  <p>Direccion: <%=psico.address%></p>
+    <%= image_tag psico.photo, class: "avatar avatar-xs" %>
+    <h1><%=psico.first_name%> <%=psico.last_name%></h1>
+    <p>Celular: <%=psico.cel_phone%></p>
+    <p>Direccion: <%=psico.address%></p>
   </div>
   <%end%>
 <%end%>
