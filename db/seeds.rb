@@ -10,15 +10,12 @@ require 'json'
 require 'faker'
 puts 'start seed'
 
-10.times do
+6.times do
   p_users = User.new(email: Faker::Internet.email, professional: true, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
   #--- avatar----
-  url = 'https://randomuser.me/api/'
-  user_serialized = open(url).read
-  user = JSON.parse(user_serialized)
-  avatar_url = user['results'][0]['picture']['large']
+  avatar_url = 'https://i.pravatar.cc/300'
   avatar = URI.open(avatar_url)
-  p_users.photo.attach(io: avatar, filename: avatar_url.split('/').last, content_type: 'image/jpg')
+  p_users.photo.attach(io: avatar, filename: "#{p_users.first_name}#{p_users.last_name}", content_type: 'image/jpg')
   #---- avatar ----
   p_users.save!
   profile = Profile.new(school: Faker::Educator.university, license_number:  Faker::Number.number(digits: 6), speciality: "familia", price: 600)

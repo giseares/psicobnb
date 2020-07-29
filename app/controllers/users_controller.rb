@@ -32,7 +32,13 @@ class UsersController < ApplicationController
     else
       @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
     end
-
+    @users_coo = User.geocoded # returns flats with coordinates
+    @markers = @users_coo.map do |users_coo|
+      {
+        lat: users_coo.latitude,
+        lng: users_coo.longitude
+      }
+    end
     @users
   end
 

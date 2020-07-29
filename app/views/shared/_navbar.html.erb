@@ -13,7 +13,7 @@
       <% if user_signed_in? %>
       <li class="nav-item active">
           <%= link_to user_path(current_user.id) do %>
-            <%= image_tag current_user.photo, class: "rounded-circle" %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
           <%end%>
         </li>
         <li class="nav-item active">

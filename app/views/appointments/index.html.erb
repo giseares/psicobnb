@@ -1,8 +1,6 @@
 <div class="container display: flex">
   <h2>Mi listado </h2>
   <div class="row">
-    <div class="col-md-4">
-      <div class="card-group">
       <% @appointments.each do |appointment| %>
         <div class="card">
           <h2>Profesional: <strong> </strong></h2>
@@ -11,9 +9,9 @@
           <p><%= appointment.appointment_date %></p>
           <h2>Hora: <strong> </strong> </h2>
           <p><%= appointment.start_hour %></p>
+          <p><%= appointment.status %></p>
         </div>
       <%end%>
       </div>
-    </div>
   </div>
 </div>

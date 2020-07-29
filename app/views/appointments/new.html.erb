@@ -1,8 +1,6 @@
-
-
-<!-- FORM provisorio-->
 <div class="container">
-<h1>Nueva cita<h1>
+<h1> Nueva cita <h1>
+
  <%= simple_form_for([@user, @appointment]) do |f| %> 
     <%= f.input :appointment_date, label: "Elija el dia", wrapper_html: { class: 'flex-select' }, as: :date, html5: true %>   
     <!-- deplegable de horios-->
@@ -10,10 +8,4 @@
     <%= f.submit class:"btn btn-dark" %>
   <% end %>
 <%= link_to "Lista de citas", appointments_path %>
-
 </div>
-
-
-
-
-
