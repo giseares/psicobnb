@@ -6,7 +6,8 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user == record
+    true
+    # user == record
   end
 
   def create?

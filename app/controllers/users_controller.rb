@@ -15,4 +15,10 @@ class UsersController < ApplicationController
     @user = User.find(@profile.user_id)
     authorize @user
   end
+
+  private
+
+  def users_params
+    params.require(:user).permit(:id, :photo)
+  end
 end
