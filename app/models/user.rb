@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :appointments, foreign_key: :client_id
   has_many :reservations, foreign_key: :professional_id, class_name: "Appointment"
   after_create :create_profile
+  has_one_attached :photo
 
   def create_profile
     profile = Profile.new(user_id: id)
