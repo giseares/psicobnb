@@ -8,18 +8,18 @@
   <input type="submit" value="Filtrar">
 </form>
 <h1>Hola!</h1>
-<h2>Aqui tienes todos los psicos:</h2>
+<h2>Aqui tienes todos los psicos filtrados:</h2>
 <div class="mx-4">  
   <div class="row">
     <div class="col">
       <%@users.each do |psico|%>
-        <%= link_to user_path(psico.id),{:style=>'text-decoration:none;', :class => "one"} do %>
+        <%= link_to user_path(psico[0].id),{:style=>'text-decoration:none;', :class => "one"} do %>
         <div class="card-product m-2">
-          <%= image_tag psico.photo, class: "rounded" %>
+          <%= image_tag psico[0].photo, class: "rounded" %>
           <div class="card-product-infos">
-            <h1><%=psico.first_name%> <%=psico.last_name%></h1>
-            <h5>Celular: <%=psico.cel_phone%></h5>
-            <h5>Direccion: <%=psico.address%></h5>
+            <h1><%=psico[0].first_name%> <%=psico[0].last_name%></h1>
+            <h5>Celular: <%=psico[0].cel_phone%></h5>
+            <h5>Direccion: <%=psico[0].address%></h5>
           </div>
         </div>
         <%end%>
