@@ -5,4 +5,5 @@
 
 <% if policy(@user).profile? %>
   <%= link_to "Editar perfil profesional", user_profile_path(@user) %>
+    <%= link_to "nuvea cita", new_user_appointment_path(@user) %>
 <% end %>
