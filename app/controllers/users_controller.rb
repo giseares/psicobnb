@@ -7,12 +7,33 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users =  policy_scope(User.where(professional: true)).order(created_at: :desc)
+    @users = []
+    if !params.nil?
+      if params[:school] != "" && params[:speciality] != ""
+        query1 = "school LIKE '%#{params[:school]}%'"
+        query2 = "speciality LIKE '%#{params[:speciality]}%'"
+        @profiles = Profile.where(query1).where(query2)
+      elsif params[:school] == "" && params[:speciality] != ""
+        query = "speciality LIKE '%#{params[:speciality]}%'"
+        @profiles = Profile.where(query)
+      elsif params[:school] != "" && params[:speciality] == ""
+        query = "school LIKE '%#{params[:school]}%'"
+        @profiles = Profile.where(query)
+      end
+      @profiles.each do |profile|
+        @users.push(policy_scope(User.where(id: profile.user_id)).order(created_at: :desc))
+      end
+    else
+      @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
+    end
+
+    @users
   end
 
   def profile
     @profile = Profile.find_by user_id: params[:user_id]
-    authorize @profile.user
+    @user = User.find(params[:user_id])
+    authorize @user
   end
 
   def update_profile
