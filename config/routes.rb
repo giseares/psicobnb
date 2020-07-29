@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     resources :appointments, only: [:new, :create]
     resources :reviews, only: [:show, :index]
-    get '/profile', to: 'users#profile', as: 'profile' 
+    get '/profile', to: 'users#profile', as: 'profile'
+    patch '/profile', to: 'users#update_profile', as: 'update_profile'
   end
 
   resources :appointments, only: [:edit, :update, :index, :show] do
