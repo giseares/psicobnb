@@ -1,14 +1,69 @@
-<div class="container">
-  <h1>Bienvenido <%#= current_user.first_name %></h1>
-  <%# <%= cl_image_tag @user.photo.key, class: "border-radius-4" %>
-  <% if policy(@profile).show? %>
-    <%= link_to "Editar perfil profesional", user_profile_path(@profile) %>
-  <% end %>
-  <%= link_to "Reservar una cita", new_user_appointment_path(@user), class:'btn btn-success' %>
-  <h2><%=@user.first_name%></h2>
-  <h2><%=@user.last_name%></h2>
-  <h2><%=@profile.school%></h2>
-  <h2><%=@profile.speciality%></h2>
-  <h2><%=@profile.license_number%></h2>
-  <h2><%=@profile.price%></h2>
+<div class="banner-map">
+  <div id="map" class="col"
+    style="width: 100%; height: 200px; objet_fit: cover ;"
+    data-markers="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
+<div class="">
+  <div class="m-3 ">
+    <div class="row">
+      <div class="col-7 row m-3 flash ">
+        <div class="col-4">
+          <h1>Informacion del profesional: <%#= current_user.first_name %></h1>
+          <br>
+          <%# <%= cl_image_tag @user.photo.key, class: "border-radius-4" %>
+          <% if policy(@user).profile? %>
+          <%#= link_to "Editar perfil profesional", user_profile_path(@user) %>
+          <% end %>
+          <%= cl_image_tag @user.photo.key, class: "avatar-square" %>
+          <h4>Reviews: </h4>
+        </div>
+        <div class="col-8">
+          <ul class="list-group list-group-flush ">
+            <li class="list-group-item"><h2>Nombre Completo: <%=@user.first_name.capitalize%> <%=@user.last_name.capitalize%></h2></li>
+            <li class="list-group-item">Escuela de pensamiento: <%=@profile.school.capitalize%></li>
+            <li class="list-group-item">Especialidad: <%=@profile.speciality.capitalize%></li>
+            <li class="list-group-item">Nro de Matricula: <%=@profile.license_number%></li>
+            <li class="list-group-item">Precio: $ <%=@profile.price%>.00</li>
+          </ul>
+        </div>
+      </div>
+      <% if current_user.present? %>
+      <div class="col-4" style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
+        <h1> Reserva tu cita: <h1>
+        <%= simple_form_for([@user, @appointment]) do |f| %> 
+            <%= f.input :appointment_date, label: "Elija el dia", wrapper_html: { class: 'flex-select' }, as: :date, html5: true %>   
+            <!-- deplegable de horios-->
+            <%= f.input :start_hour, label: "Eliga el horario"  %>
+            <%= f.submit class:'btn btn-success' %>
+          <% end %>
+        <%= link_to "Lista de citas", appointments_path, class:"btn btn-dark" %>
+      </div>
+      <%else%>
+        <%= link_to "Reservar una cita", new_user_appointment_path(@user), class:'btn btn-success' %>
+      <%end%>
+    </div>
+  </div>
+
+</div>
+
+<%#console%> 
+<%# 
+<div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
+<div data-plugin-in-point-id="BOOK_IT_SIDEBAR" data-section-id="BOOK_IT_SIDEBAR">
+<div class="_ud8a1c"><div class="_wgmchy" data-testid="book-it-default">
+<div class="_13vog1a"><div class="_xqcexm"><span class="_krjbj">$28 por noche</span>
+<div class="_80f7zz"><div class="_ymq6as"><span><span class="_pgfqnw" aria-hidden="true">$28</span>
+<span class="_1l0ezq0" aria-hidden="true">/noche</span></span></div></div></div><div><span class="_1y9gwt75">
+<span class="_9qqdp4" style="font-size: 14px;"><span class="_8tbpu3" aria-hidden="true">󰀄</span></span>
+<button aria-label="Recibiste una calificación de 4,97 de un total de 5 en base a 255 evaluaciones." tabindex="-1" type="button" class="_1wlymrds">
+<span class="_12si43g">4,97</span><span class="_bq6krt">(255)</span></button></span></div></div><div class="_p03egf">
+<div class="_e296pg"><div><div class="_poaz3m" style="border-radius: 8px;"><div class="_jro6t0"><div class="_zdxht7">
+<div class="_e296pg" style="flex: 1 1 0%;">
+<div class="_sbmagf" style="background: none; border-radius: 8px 8px 0px 0px; top: 0px; left: 0px; right: 0px; bottom: -1px;"></div>
+<div class="_11wiged" aria-label="Cambiar fechas; Check-in: undefined; Check-out: undefined" aria-invalid="false" role="button"
+ tabindex="0"><div class="_1acx77b"><div class="_7eq2v2">Check-in</div><div class="_1ygdnkvm">Agregá la fecha</div>
+ </div><div class="_14tl4ml5"><div class="_7eq2v2">Check-out</div><div class="_1ygdnkvm">Agregá la fecha</div></div></div>
+ <div class="_t26glb" style="top: 0px; left: 0px; right: 0px; bottom: -1px; border-radius: 8px 8px 0px 0px; border-color: rgb(176, 176, 176); border-width: 1px; z-index: 0;"></div></div></div></div><div class="_jro6t0"><div class="_bp34sw"><div class="_e296pg" style="flex: 1 1 0%;"><div class="_sbmagf" style="background: none; border-radius: 0px 0px 8px 8px; top: 0px; left: 0px; right: 0px; bottom: -1px;"></div><div class="_11wiged" aria-expanded="false" aria-haspopup="true" aria-labelledby="guests-label GuestPicker-book_it-trigger" aria-disabled="false" role="button" tabindex="0"><label for="GuestPicker-book_it-trigger" class="_1x080uh"><div class="_7eq2v2">Viajeros</div><div class="_1wo1vgi" id="GuestPicker-book_it-trigger" aria-invalid="false" aria-disabled="false"><div class="_1ir6ymk"><span>1 huésped</span></div></div></label><div class="_vgx32s"><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 16px; width: 16px; display: block; fill: currentcolor;"><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fill-rule="evenodd"></path></svg></div></div><div class="_t26glb" style="top: 0px; left: 0px; right: 0px; bottom: -1px; border-radius: 0px 0px 8px 8px; border-color: rgb(176, 176, 176); border-width: 1px; z-index: 0;"></div></div><div></div></div></div></div></div></div></div><div class="_fz3zdn"><form action="/payments/book?hosting_id=11217474" method="post"><input type="hidden" name="s" value="undefined"><input type="hidden" name="hosting_id" value="11217474"><input type="hidden" name="guest_currency" value="USD"><input type="hidden" name="checkin" value="undefined"><input type="hidden" name="checkout" value="undefined"><input type="hidden" name="number_of_guests" value="1"><input type="hidden" name="number_of_adults" value="1"><input type="hidden" name="number_of_children" value="0"><input type="hidden" name="number_of_infants" value="0"><input type="hidden" name="selected_cancellation_policy_id" value="undefined"><input type="hidden" name="is_work_trip" value="false"><button data-testid="homes-pdp-cta-btn" type="submit" class="_1ot1we5p"><span class="_163rr5i"><span class="_19di23v" style="background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%); --mouse-x:87.6769; --mouse-y:32.0833;"></span></span>
+<span class="_tcp689">Verificar disponibilidad </span></button></form></div></div></div></div></div> %>

@@ -4,6 +4,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @profile = Profile.find_by user_id: params[:id]
+    @appointment = Appointment.new
+    #@users_coo = User.geocoded # returns flats with coordinates
+    @marker =
+      [{
+        lat: @user.latitude,
+        lng: @user.longitude
+      }]
     authorize @user
   end
 
