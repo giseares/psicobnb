@@ -1,11 +1,12 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: %i[show edit update]
+  before_action :set_appointment, only: %i[show edit update show]
 
   def index
     @appointments = policy_scope(Appointment).all
   end
 
   def show
+    @appointments = User.find(params[:id])
   end
 
   def new
