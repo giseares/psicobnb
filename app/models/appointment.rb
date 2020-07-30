@@ -3,3 +3,4 @@ class Appointment < ApplicationRecord
   belongs_to :professional, class_name: "User"
   has_one :review
 end
+

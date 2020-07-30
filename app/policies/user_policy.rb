@@ -12,12 +12,4 @@ class UserPolicy < ApplicationPolicy
   def create?
     return false
   end
-
-  def profile?
-    user == record
-  end
-
-  def update_profile?
-    record.professional
-  end
 end
