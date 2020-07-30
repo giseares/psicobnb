@@ -1,7 +1,4 @@
 <div class = "Container"> 
-  <% @appointments.each do |appointment| %>
-    <div class="card">
-    <h2>Profesional: <strong> </strong></h2>
-    </h2> <p><%= appointment.professional.first_name %></p> 
+  <p><%= appointment.professional.first_name %></p> 
   <% end %>
 </div>

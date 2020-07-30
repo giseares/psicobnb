@@ -6,7 +6,6 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointments = User.find(params[:id])
   end
 
   def new
@@ -30,11 +29,13 @@ class AppointmentsController < ApplicationController
 
   def update
     # fetch appointment to update from DB
+    @appointment.client_id = current_user.id
     @user = User.find(params[:user_id])
     # update record
     @appointment.update(appointment_params)
     # redirect to appointment
     redirect_to appointment_path(appointment)
+    # aaprobar las modifcaciones
   end
 
   private

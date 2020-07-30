@@ -1,11 +1,29 @@
-<h1>Editar <%= @cocktail.name %><h1>
 <div class="container">
- <%= simple_form_for([user]) do |f| %> 
-    <%= f.input :appointment_date, wrapper_html: { class: 'flex-select' }, as: :date, html5: true %>   
-    <!-- deplegable de horios-->
-    <%= u.label :start_hour, "Appointment Begin:"  %>
-    <%= u.text_field :appointment_date,class:"form-control" %> 
-    <%= u.submit class:"btn btn-dark" %>
-  <% end %>
+# usuario = current user
+# cita = todas las citas
+# profesional lo traigo de la cita
+# Ordenar 
+<% if current_user.professional?  %>
+  <% @appointments.each do |appointment| %>
+    <div class="card">
+    <%# Profesional: Cliente.name / Dia / Hora /  Status / Boton para aprobar-cancelar %>
+      <p><%= appointment.client.first_name %></p> 
+      <p><%= appointment.appointment_date %></p>
+      <p><%= appointment.start_hour %></p>
+      <p><%= appointment.status %></p>
+    </div>
+    <%end%>
+<%else%> 
+  <% @appointments.each do |appointment| %>
+  <%# Cliente: Profesional.name / Dia / Hora /  Status %>
+    <div class="card">
+      <p><%= appointment.professional.first_name %></p> 
+      <p><%= appointment.appointment_date %></p>
+      <p><%= appointment.start_hour %></p>
+      <p><%= appointment.status %></p>
+    </div>
+  <%end%>
+<%end%>
+
 </div>
 <%= link_to "volver", appointments_path %>
