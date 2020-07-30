@@ -1,1 +1,13 @@
 <h3>Aca va el form</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= simple_form_for [@appointment, @review] do |f| %>
+        <%= f.input :rating_sharp, collection: (1..5).to_a, label: "Puntualidad" %>
+        <%= f.input :rating_qualityprice, collection: (1..5).to_a, label: "Precio/Calidad" %>
+        <%= f.input :rating_facilities, collection: (1..5).to_a, label: "Instalaciones" %>
+        <%= f.submit "Enviar" %>
+      <% end %>
+    </div>
+  </div>
+</div>

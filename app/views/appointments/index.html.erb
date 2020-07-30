@@ -3,7 +3,11 @@
   <div class="row">
       <% @appointments.each do |appointment| %>
         <div class="card">
-          <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
+          <% if appointment.review.present? %>
+            <span><%= "*" * appointment.review.rating_sharp  %></span>
+          <% else %>
+            <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
+          <% end %>
           <h2>Profesional: <strong> </strong></h2>
           </h2> <p><%= appointment.professional.first_name %></p> 
           <h2>Fecha: <strong> </strong> </h2>
@@ -13,6 +17,9 @@
           <p><%= appointment.status %></p>
         </div>
       <%end%>
+
       </div>
   </div>
 </div>
+<%= console %>
+
