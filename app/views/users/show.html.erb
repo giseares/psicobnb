@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Bienvenido <%#= current_user.first_name %></h1>
   <%# <%= cl_image_tag @user.photo.key, class: "border-radius-4" %>
-  <% if policy(@user).profile? %>
-    <%= link_to "Editar perfil profesional", user_profile_path(@user) %>
+  <% if policy(@profile).show? %>
+    <%= link_to "Editar perfil profesional", user_profile_path(@profile) %>
   <% end %>
   <%= link_to "Reservar una cita", new_user_appointment_path(@user), class:'btn btn-success' %>
   <h2><%=@user.first_name%></h2>

@@ -42,7 +42,7 @@
 
   <h1>Perfil Profesional</h1>
 
-  <%= simple_form_for( @profile, url: user_update_profile_path(@user), html: { method: :patch }) do |t| %>
+  <%= simple_form_for( @profile, url: user_profile_path(@user), html: { method: :patch }) do |t| %>
   <%= t.input :school,
                 required: false,
                 input_html: { autocomplete: "new-school" } %>
