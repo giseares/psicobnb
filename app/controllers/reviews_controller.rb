@@ -15,10 +15,12 @@ class ReviewsController < ApplicationController
   def new
     @appointment = Appointment.find(params[:appointment_id])
     @review = Review.new
+    authorize @review
   end
 
   def create
     @appointment = Appointment.find(params[:appointment_id])
+    @review = Review.new(review_params)
     @review.appointment = @appointment
     if @review.save
       redirect_to appointment_path
