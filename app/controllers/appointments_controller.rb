@@ -2,7 +2,11 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show edit update show]
 
   def index
-    @appointments = policy_scope(current_user.appointments)
+    if current_user.professional?
+      @appointments = policy_scope(current_user.reservations)
+    else
+      @appointments = policy_scope(current_user.appointments)
+    end
   end
 
   def show
@@ -30,12 +34,13 @@ class AppointmentsController < ApplicationController
   def update
     # fetch appointment to update from DB
     @appointment.client_id = current_user.id
-    @user = User.find(params[:user_id])
+    @appointment.professional_id = params[:user_id]
     # update record
     @appointment.update(appointment_params)
     # redirect to appointment
-    redirect_to appointment_path(appointment)
+    redirect_to appointment_path(@appointment)
     # aaprobar las modifcaciones
+    authorize @appointment
   end
 
   private

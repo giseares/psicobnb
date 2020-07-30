@@ -1,31 +1,22 @@
 <div class="container display: flex">
   <h2>Mi listado </h2>
   <div class="row">
-<<<<<<< HEAD
     <% @appointments.each do |appointment| %>
       <div class="card">
-        <h2>Profesional: <strong> </strong></h2>
-        </h2> <p><%= appointment.professional.first_name %></p> 
-        <h2>Fecha: <strong> </strong> </h2>
-        <p><%= appointment.appointment_date %></p>
-        <h2>Hora: <strong> </strong> </h2>
-        <p><%= appointment.start_hour %></p>
-        <p><%= appointment.status %></p>
-=======
-      <% @appointments.each do |appointment| %>
-        <div class="card">
-          <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
-          <h2>Profesional: <strong> </strong></h2>
-          </h2> <p><%= appointment.professional.first_name %></p> 
-          <h2>Fecha: <strong> </strong> </h2>
-          <p><%= appointment.appointment_date %></p>
-          <h2>Hora: <strong> </strong> </h2>
-          <p><%= appointment.start_hour %></p>
-          <p><%= appointment.status %></p>
-        </div>
-      <%end%>
->>>>>>> master
-      </div>
-    <%end%>
+      <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
+      <h2>Profesional: <strong> </strong></h2>
+      </h2> <p><%= appointment.professional.first_name %></p> 
+      <h2>Fecha: <strong> </strong> </h2>
+      <p><%= appointment.appointment_date %></p>
+      <h2>Hora: <strong> </strong> </h2>
+      <p><%= appointment.start_hour %></p>
+      <p><%= appointment.status %></p>
+      <% if current_user.professional?  %>
+        <%= simple_form_for(appointment) do |f| %> 
+        <%= f.input :status, collection: %w[Aceptada Rechazada], include_blank: false ,label: "Eliga el Status"  %>
+        <%= f.submit class:"btn btn-dark" %>
+        <% end %>
+      <% end %>
+    <% end %> 
   </div>
 </div>

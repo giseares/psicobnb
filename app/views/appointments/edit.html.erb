@@ -10,8 +10,11 @@
       <p><%= appointment.client.first_name %></p> 
       <p><%= appointment.appointment_date %></p>
       <p><%= appointment.start_hour %></p>
-      <p><%= appointment.status %></p>
-    </div>
+        <% if appointment.status = "Pendiente"  %>
+    
+        <% end %>
+    <% end %>
+     </div>
     <%end%>
 <%else%> 
   <% @appointments.each do |appointment| %>
@@ -27,3 +30,4 @@
 
 </div>
 <%= link_to "volver", appointments_path %>
+
