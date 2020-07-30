@@ -10,22 +10,12 @@ class UsersController < ApplicationController
   def index
     @users = []
     if !params.nil?
-      if params[:school] != "" && params[:speciality] != ""
-        query1 = "school LIKE '%#{params[:school]}%'"
-        query2 = "speciality LIKE '%#{params[:speciality]}%'"
-        @profiles = Profile.where(query1).where(query2)
-      elsif params[:school] == "" && params[:speciality] != ""
-        query = "speciality LIKE '%#{params[:speciality]}%'"
-        @profiles = Profile.where(query)
-      elsif params[:school] != "" && params[:speciality] == ""
-        query = "school LIKE '%#{params[:school]}%'"
-        @profiles = Profile.where(query)
-      end
-
-      if @profiles.empty?
-        @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
-      else
+      # Ejecuto el query con los filtros
+      @profiles = query_builder(params)
+      if @profiles.present?
         @users = policy_scope(User.where(id: @profiles.pluck(:user_id))).order(created_at: :desc)
+      else
+        @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
       end
     else
       @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
@@ -59,6 +49,21 @@ class UsersController < ApplicationController
     # @profile.license_number = params[:profile][:license_number]
     # @profile.speciality = params[:profile][:speciality]
     # @profile.price = params[:profile][:price]
+  end
+
+  def query_builder(param)
+    school = param[:school].presence
+    speciality = param[:speciality].presence
+    if school && speciality
+      @profiles = Profile.where("school LIKE ? AND speciality LIKE ?", school, speciality)
+    elsif speciality
+      @profiles = Profile.where("speciality LIKE ?", speciality)
+    elsif school
+      @profiles = Profile.where("school LIKE ?", school)
+    else
+      @profiles = nil
+    end
+    @profiles
   end
 
   private
