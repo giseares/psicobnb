@@ -10,6 +10,26 @@ require 'json'
 require 'faker'
 puts 'start seed'
 
+ #--- Seed usuario de prueba----
+user = User.new(email: 'user@user.com', professional: false, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
+avatar_url = 'https://i.pravatar.cc/300'
+avatar = URI.open(avatar_url)
+
+user.photo.attach(io: avatar, filename: "#{user.first_name}#{user.last_name}", content_type: 'image/jpg')
+user.save!
+
+#--- Seed psicologo de prueba----
+psyco = User.new(email: 'psico@psico.com', professional: true, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
+avatar_url2 = 'https://i.pravatar.cc/300'
+avatar2 = URI.open(avatar_url2)
+
+psyco.photo.attach(io: avatar2, filename: "#{psyco.first_name}#{psyco.last_name}", content_type: 'image/jpg')
+psyco.save!
+profile2 = Profile.find_by user_id: psyco.id
+profile2.update(school: 'Humanismo', license_number:  Faker::Number.number(digits: 6), speciality: "traumas psicologicos", price: 600)
+
+
+
 6.times do
   p_users = User.new(email: Faker::Internet.email, professional: true, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
   #--- avatar----
