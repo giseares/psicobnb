@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[show edit create update ]
+  before_action :set_review, only: %i[show edit update ]
 
   def index
     if current_user.professional?
@@ -23,10 +23,11 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.appointment = @appointment
     if @review.save
-      redirect_to appointment_path
+      redirect_to appointments_path
     else
       render :new
     end
+    authorize @appointment
   end
 
   def edit
