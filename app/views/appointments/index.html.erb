@@ -3,6 +3,7 @@
   <div class="row">
       <% @appointments.each do |appointment| %>
         <div class="card">
+          <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
           <h2>Profesional: <strong> </strong></h2>
           </h2> <p><%= appointment.professional.first_name %></p> 
           <h2>Fecha: <strong> </strong> </h2>

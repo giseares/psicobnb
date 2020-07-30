@@ -1,15 +1,15 @@
-class UserPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def show?
+  def new?
     true
   end
 
   def create?
-    return false
+    true
   end
 end

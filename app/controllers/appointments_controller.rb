@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show edit update]
 
   def index
-    @appointments = policy_scope(Appointment).all
+    @appointments = policy_scope(current_user.appointments)
   end
 
   def show
