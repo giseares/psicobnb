@@ -26,11 +26,12 @@ avatar2 = URI.open(avatar_url2)
 psyco.photo.attach(io: avatar2, filename: "#{psyco.first_name}#{psyco.last_name}", content_type: 'image/jpg')
 psyco.save!
 profile2 = Profile.find_by user_id: psyco.id
-profile2.update(school: 'Humanismo', license_number:  Faker::Number.number(digits: 6), speciality: "traumas psicologicos", price: 600)
+profile2.update(school: 'Humanismo', license_number:  Faker::Number.number(digits: 6), speciality: "Social", price: 600)
 
+SCHOOLS = ['Estructuralismo', 'Funcionalismo', 'Psicoanalisis', 'Conductismo', 'Humanismo', 'Cognotivismo']
+SPECIALITY = ['Social', 'Familiar', 'Parejas', 'Deporte', 'Forense', 'Clinica', 'Organizacional', 'Educativa', 'Neuropsicologia']
 
-
-6.times do
+10.times do
   p_users = User.new(email: Faker::Internet.email, professional: true, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
   #--- avatar----
   avatar_url = 'https://i.pravatar.cc/300'
@@ -39,12 +40,12 @@ profile2.update(school: 'Humanismo', license_number:  Faker::Number.number(digit
   #---- avatar ----
   p_users.save!
   profile = Profile.find_by user_id: p_users.id
-  profile.update(school: Faker::Educator.university, license_number:  Faker::Number.number(digits: 6), speciality: "familia", price: 600)
+  profile.update(school: SCHOOLS.sample, license_number:  Faker::Number.number(digits: 6), speciality: SPECIALITY.sample, price: 600)
   
   p p_users
   p profile
 end
-18.times do
+10.times do
   c_users = User.new(email: Faker::Internet.email, professional: false, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
   c_users.save!
   p c_users
