@@ -10,22 +10,22 @@
     <div class="row">
       <div class="col-7 row m-3 flash ">
         <div class="col-4">
-          <h1>Informacion del profesional: <%#= current_user.first_name %></h1>
+          <h1>Informacion del profesional: <%= current_user.first_name %></h1>
           <br>
-          <%#= cl_image_tag @user.photo.key, class: "border-radius-4" %>
-          <%# if policy(@user).profile? %>
-          <%#= link_to "Editar perfil profesional", user_profile_path(@user) %>
-          <%# end %>
-          <% #= cl_image_tag @user.photo.key, class: "avatar-square" %>
+          <% cl_image_tag @user.photo.key, class: "border-radius-4" %>
+          <% if policy(@profile).show? %>
+          <% link_to "Editar perfil profesional", user_profile_path(@user) %>
+          <% end %>
+          <%= cl_image_tag @user.photo.key, class: "avatar-square" %>
           <h4>Reviews: </h4>
         </div>
         <div class="col-8">
           <ul class="list-group list-group-flush ">
             <li class="list-group-item"><h2>Nombre Completo: <%=@user.first_name.capitalize%> <%=@user.last_name.capitalize%></h2></li>
-            <!--<li class="list-group-item">Escuela de pensamiento: <%#=@profile.school.capitalize%></li>-->
-            <!--<li class="list-group-item">Especialidad: <%#=@profile.speciality.capitalize%></li>-->
-            <!--<li class="list-group-item">Nro de Matricula: <%#=@profile.license_number%></li>-->
-            <!--<li class="list-group-item">Precio: $ <%#=@profile.price%>.00</li>-->
+            <li class="list-group-item">Escuela de pensamiento: <%=@profile.school.capitalize%></li>
+            <li class="list-group-item">Especialidad: <%=@profile.speciality.capitalize%></li>
+            <li class="list-group-item">Nro de Matricula: <%=@profile.license_number%></li>
+            <li class="list-group-item">Precio: $ <%=@profile.price%>.00</li>
           </ul>
         </div>
       </div>
@@ -47,7 +47,6 @@
   </div>
 
 </div>
-
 <%#console%> 
 <%# 
 <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
