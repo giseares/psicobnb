@@ -1,50 +1,10 @@
 <div class="container">
   <h2>Listado de mis Citas </h2>
-  
-    <% @appointments.each do |appointment| %>
-      <div class="card-appointment">
-        <table class="table text-center">
-          <tr>
-            <th scope="col">Profesional:</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Hora</th>
-            <th scope="col">Estado</th>
-          </tr>
-          <tr>
-            <td scope="row"><%= appointment.professional.first_name %></td>
-            <td scope="row"><%= appointment.appointment_date %></td>
-            <td scope="row"><%= appointment.start_hour %></td>
-            <td scope="row"><%= appointment.status.capitalize %></td>            
-          </tr>
-        </table>
-        <% if current_user.professional?  %>
-          <%= simple_form_for(appointment) do |f| %> 
-            <%= f.input :status, collection: %w[Aceptada Rechazada], include_blank: false ,label: "Eliga el Status"  %>
-            <%= f.submit class:"btn btn-dark" %>
-            <% if appointment.review.present? %>
-              <div>
-                <h4><strong>Review:</strong></h4>
-                <p>Puntualidad: <%= appointment.review.rating_sharp  %></p>
-                <p>Precio/Calidad: <%= appointment.review.rating_qualityprice  %></p>
-                <p>Instalaciones: <%= appointment.review.rating_facilities  %></p>
-              </div>
-            <% else %>
-              <p>Todavia no se han generado reviews</p>
-            <% end %>
-          <% end %>   
-        <% else %>
-          <% if appointment.review.present? %>
-            <div class=>
-              <h4><strong>Review:</strong></h4>
-              <p>Puntualidad: <%= appointment.review.rating_sharp  %></p>
-              <p>Precio/Calidad: <%= appointment.review.rating_qualityprice  %></p>
-              <p>Instalaciones: <%= appointment.review.rating_facilities  %></p>
-            </div>
-          <% else %>
-            <%= link_to "Crear Review", new_appointment_review_path(appointment), class:"btn btn-success"  %>
-          <% end %>
-        <% end %>
-      </div>  
-    <% end %> 
+  <% @appointments.each do |appointment| %>
+    <% if current_user.professional?  %>
+      <%= render "appointments/partials/professional-appointment-card", appointment: appointment %>
+    <% else %>
+      <%= render "appointments/partials/client-appointment-card", appointment: appointment %>
+    <% end %>
+  <% end %>
 </div>
-
