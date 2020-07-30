@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id="home">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "creativity.png" %>
     <% end %>
 
@@ -16,11 +16,8 @@
             <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
           <%end%>
         </li>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
         <li class="nav-item">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
       <% else %>
         <li class="nav-item">

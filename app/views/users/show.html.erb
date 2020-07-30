@@ -12,9 +12,9 @@
         <div class="col-4">
           <h1>Informacion del profesional: <%#= current_user.first_name %></h1>
           <br>
-          <%# <%= cl_image_tag @user.photo.key, class: "border-radius-4" %>
-          <% if policy(@user).profile? %>
-          <%#= link_to "Editar perfil profesional", user_profile_path(@user) %>
+          <% cl_image_tag @user.photo.key, class: "border-radius-4" %>
+          <% if policy(@profile).show? %>
+          <% link_to "Editar perfil profesional", user_profile_path(@user) %>
           <% end %>
           <%= cl_image_tag @user.photo.key, class: "avatar-square" %>
           <h4>Reviews: </h4>
@@ -47,7 +47,6 @@
   </div>
 
 </div>
-
 <%#console%> 
 <%# 
 <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
