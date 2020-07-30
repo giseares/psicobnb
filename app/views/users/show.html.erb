@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-7 row m-3 flash ">
         <div class="col-4">
-          <h1>Informacion del profesional: <%#= current_user.first_name %></h1>
+          <h1>Informacion del profesional: <%= current_user.first_name %></h1>
           <br>
           <% cl_image_tag @user.photo.key, class: "border-radius-4" %>
           <% if policy(@profile).show? %>
