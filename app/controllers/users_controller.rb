@@ -24,11 +24,12 @@ class UsersController < ApplicationController
 
       if @profiles.empty?
         @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
+<<<<<<< HEAD
        # redirect_to users_path
+=======
+>>>>>>> master
       else
-        @profiles.each do |profile|
-          @users.push(policy_scope(User.where(id: profile.user_id)).order(created_at: :desc))
-        end
+        @users = policy_scope(User.where(id: @profiles.pluck(:user_id))).order(created_at: :desc)
       end
     else
       @users = policy_scope(User.where(professional: true)).order(created_at: :desc)
