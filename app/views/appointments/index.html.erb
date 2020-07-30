@@ -3,25 +3,42 @@
   <div class="row">
     <% @appointments.each do |appointment| %>
       <div class="card">
-        <% if appointment.review.present? %>
-            <span><%= "*" * appointment.review.rating_sharp  %></span>
-          <% else %>
-            <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
-          <% end %>
-      <h2>Profesional: <strong> </strong></h2>
-      </h2> <p><%= appointment.professional.first_name %></p> 
-      <h2>Fecha: <strong> </strong> </h2>
-      <p><%= appointment.appointment_date %></p>
-      <h2>Hora: <strong> </strong> </h2>
-      <p><%= appointment.start_hour %></p>
-      <p><%= appointment.status %></p>
       <% if current_user.professional?  %>
+        <h4>Paciente:</h4>
+        </h3><%= appointment.client.first_name %></h3>
+        <h4>Fecha:</h4>
+        <h3><%= appointment.appointment_date %></h3>
+        <h4>Hora:</h4>
+        <h3><%= appointment.start_hour %></h3>
+        <h4>Status:</h4>
+        <h3><%= appointment.status %></h3>
+
         <%= simple_form_for(appointment) do |f| %> 
-        <%= f.input :status, collection: %w[Aceptada Rechazada], include_blank: false ,label: "Eliga el Status"  %>
-        <%= f.submit class:"btn btn-dark" %>
+
+          <% if appointment.status == "Pendiente" %>
+            <%= f.input :status, collection: %w[Aceptada Rechazada], include_blank: false ,label: "Elija nuevo Status"  %>
+            <%= f.submit class:"btn btn-dark" %>
+          <% else %>
+            <h4>no podes cambiar</h4>
+          <% end %>    
         <% end %>
+
+      <% else %>
+
+        <% if appointment.review.present? %>
+          <span><%= "*" * appointment.review.rating_sharp  %></span>
+        <% else %>
+          <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
+        <% end %>%>
+        <h4>Profesional:</h4>
+        </h3><%= appointment.professional.first_name %></h3>
+        <h4>Fecha:</h4>
+        <h3><%= appointment.appointment_date %></h3>
+        <h4>Hora:</h4>
+        <h3><%= appointment.start_hour %></h3>
+        <h4>Status:</h4>
+        <h3><%= appointment.status %></h3>
       <% end %>
     <% end %> 
   </div>
 </div>
-
