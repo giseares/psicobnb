@@ -19,7 +19,7 @@
       <%@users.each do |psico|%>
         <%= link_to user_path(psico.id),{:style=>'text-decoration:none;', :class => "one"} do %>
         <div class="card-product m-2">
-          <%= cl_image_tag psico.photo.key, class: "rounded" %>
+          <%#= cl_image_tag psico.photo.key, class: "rounded" %>
           <div class="card-product-infos">
             <h1><%=psico.first_name%> <%=psico.last_name%></h1>
             <h5>Celular: <%=psico.cel_phone%></h5>
@@ -38,4 +38,4 @@
     </div>
   </div>
 </div>
- <%#console%>
+
