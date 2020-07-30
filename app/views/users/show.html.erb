@@ -13,9 +13,9 @@
           <h1>Informacion del profesional: <%#= current_user.first_name %></h1>
           <br>
           <%# <%= cl_image_tag @user.photo.key, class: "border-radius-4" %>
-          <% if policy(@user).profile? %>
+          <%# if policy(@user).profile? %>
           <%#= link_to "Editar perfil profesional", user_profile_path(@user) %>
-          <% end %>
+          <%# end %>
           <%= cl_image_tag @user.photo.key, class: "avatar-square" %>
           <h4>Reviews: </h4>
         </div>
