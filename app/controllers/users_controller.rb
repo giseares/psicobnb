@@ -30,27 +30,6 @@ class UsersController < ApplicationController
     @users
   end
 
-  def profile
-    @profile = Profile.find_by user_id: params[:user_id]
-    @user = User.find(params[:user_id])
-    authorize @user
-  end
-
-  def update_profile
-    @profile = Profile.find_by user_id: params[:user_id]
-    if @profile.update(profile_params)
-      @user = User.find(params[:user_id])
-      authorize @user
-      redirect_to user_path(@user)
-    else
-      render :new
-    end
-    # @profile.school = params[:profile][:school]
-    # @profile.license_number = params[:profile][:license_number]
-    # @profile.speciality = params[:profile][:speciality]
-    # @profile.price = params[:profile][:price]
-  end
-
   def query_builder(param)
     school = param[:school].presence
     speciality = param[:speciality].presence
@@ -64,11 +43,5 @@ class UsersController < ApplicationController
       @profiles = nil
     end
     @profiles
-  end
-
-  private
-
-  def profile_params
-    params.require(:profile).permit(:school, :license_number, :speciality, :price)
   end
 end
