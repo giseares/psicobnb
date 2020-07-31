@@ -51,7 +51,7 @@ end
   p c_users
 end
 22.times do
-  appointment = Appointment.new(appointment_date: Faker::Date.in_date_period, start_hour: 18, status: "pendiente de confirm", session_price: 600)
+  appointment = Appointment.new(appointment_date: Faker::Date.in_date_period, start_hour: 18, status: "Pendiente de confirmar", session_price: 600)
   appointment.client_id = User.where(professional: false).sample.id # ver
   appointment.professional_id = User.where(professional: true).sample.id
   appointment.save!

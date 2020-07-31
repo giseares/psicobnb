@@ -16,4 +16,12 @@ class AppointmentPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def update?
+    true
+  end
+
+  def show?
+    true
+  end
 end
