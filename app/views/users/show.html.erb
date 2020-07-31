@@ -9,10 +9,10 @@
   <div class="m-3 ">
     <div class="row">
       <div class="col-7 row m-3 flash ">
-        <h1>Informacion del profesional: <%#= current_user.first_name %></h1>
+        <h1>Informacion del profesional:  <%=@user.first_name.capitalize%></h1> 
         <div class="col-4">
           <br>
-          <% if policy(@profile).show? %>
+          <% if policy(@user.profile).show? %>
           <% link_to "Editar perfil profesional", user_profile_path(@user) %>
           <% end %>
           <%= cl_image_tag @user.photo.key, class: "avatar-square" %>
@@ -23,10 +23,10 @@
           <ul class="list-group list-group-flush ">
             <li class="list-group-item border-bottom-0"><h3>Nombre: <%=@user.first_name.capitalize%> </h3>
             <li class="list-group-item"><h3>Apellido <%=@user.last_name.capitalize%></li></h3>
-            <li class="list-group-item">Escuela de pensamiento: <%=@profile.school%></li>
-            <li class="list-group-item">Especialidad: <%=@profile.speciality%></li>
-            <li class="list-group-item">Nro de Matricula: <%=@profile.license_number%></li>
-            <li class="list-group-item">Precio: $ <%=@profile.price%>.00</li>
+            <li class="list-group-item">Escuela de pensamiento: <%=@user.profile.school%></li>
+            <li class="list-group-item">Especialidad: <%=@user.profile.speciality%></li>
+            <li class="list-group-item">Nro de Matricula: <%=@user.profile.license_number%></li>
+            <li class="list-group-item">Precio: $ <%=@user.profile.price%>.00</li>
           </ul>
         </div>
         <div class="container">
@@ -39,7 +39,8 @@
         <%= simple_form_for([@user, @appointment]) do |f| %> 
             <%= f.input :appointment_date, label: "Elija el dia", wrapper_html: { class: 'flex-select' }, as: :date, html5: true %>   
             <!-- deplegable de horios-->
-            <%= f.input :start_hour, label: "Eliga el horario"  %>
+            <%= f.input :start_hour, collection: (9..20).to_a, label: "Elija el horario"  %>
+            <% puts f.input :appointment_date %>
             <%= f.submit class:'btn btn-success' %>
           <% end %>
         <%= link_to "Lista de citas", appointments_path, class:"btn btn-dark" , style: 'display:fixed;' %>
@@ -54,7 +55,7 @@
     </div>
   </div>
 </div>
-<%#console%> 
+<%console%> 
 <%# 
 <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
 <div data-plugin-in-point-id="BOOK_IT_SIDEBAR" data-section-id="BOOK_IT_SIDEBAR">
