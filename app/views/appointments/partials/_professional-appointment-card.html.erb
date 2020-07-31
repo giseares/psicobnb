@@ -12,16 +12,11 @@
       <td scope="row"><%= appointment.appointment_date %></td>
       <td scope="row"><%= appointment.start_hour %>:00 hs.</td>
       <td scope="row"><%= appointment.status %></td>
-        <%# if Date.today > appointment.appointment_date && appointment.status == "Aceptada" %>
-          <%#= "Finalizada" %>
-        <%# else %>
-          <%#= appointment.status %>
-        <%# end %></td>
       <td scope="row">$<%= appointment.session_price %>.00</td>          
     </tr>
   </table>
   <%= simple_form_for(appointment) do |f| %> 
-
+    <% if appointment.status == "Pendiente" %>
       <%= f.input :status, collection: %w[Aceptada Rechazada], include_blank: false ,label: "Elija nuevo Status"  %>
       <%= f.submit class:"btn btn-dark" %>
     <% else %>
