@@ -29,7 +29,7 @@ profile2 = Profile.find_by user_id: psyco.id
 profile2.update(school: 'Humanismo', license_number:  Faker::Number.number(digits: 6), speciality: "Social", price: 600)
 
 SCHOOLS = ['Estructuralismo', 'Funcionalismo', 'Psicoanalisis', 'Conductismo', 'Humanismo', 'Cognotivismo']
-SPECIALITY = ['Social', 'Familiar', 'Parejas', 'Deporte', 'Forense', 'Clinica', 'Organizacional', 'Educativa', 'Neuropsicologia']
+SPECIALITY = ['Psicologia Social', 'Psicologia de Familia', 'Psicologia de Parejas', 'Psicologia del Deporte', 'Psicologia Forense', 'Psicologia Clinica', 'Psicologia Organizacional', 'Psicologia Educativa', 'Neuropsicologia']
 
 7.times do
   p_users = User.new(email: Faker::Internet.email, professional: true, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.street_address, cel_phone: Faker::PhoneNumber.cell_phone_in_e164, dni: Faker::Number.number(digits: 8), password: '123456')
