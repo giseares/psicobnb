@@ -2,7 +2,6 @@
   <div id="app-index" id="title">
     <h2 class="card-appointment d-flex justify-content-between" >Listado de mis Citas   <%= link_to "Volver", users_path, class:'btn btn-secondary ' %></h2>  
   </div>
-  
   <% @appointments.each do |appointment| %>
     <% if current_user.professional?  %>
       <%= render "appointments/partials/professional-appointment-card", appointment: appointment %>
