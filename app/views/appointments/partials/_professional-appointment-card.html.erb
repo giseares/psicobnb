@@ -35,61 +35,59 @@
         <tr>
           <th scope="col">Puntualidad</th>
           <th scope="col">Precio/Calidad</th>
-          <th scope="col">Instalaciones</th>          
+          <th scope="col">Instalaciones</th>
         </tr>
         <tr>
           <td scope="row">
             <% if appointment.review.rating_sharp == 1  %>
-              <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_sharp == 2 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif  appointment.review.rating_sharp == 3  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_sharp == 4  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_sharp == 5 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% end %>
-          </td>
-
-          <td scope="row">
-            <% if appointment.review.rating_qualityprice == 1  %>
-              <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_qualityprice == 2 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif  appointment.review.rating_qualityprice == 3  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_qualityprice == 4  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_qualityprice == 5 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% end %>
-          </td>
-
-          <td scope="row">
-            <% if appointment.review.rating_facilities == 1  %>
-              <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_facilities == 2 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif  appointment.review.rating_facilities == 3  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_facilities == 4  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_facilities == 5 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% end %></p>
+               <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_sharp == 2 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif  appointment.review.rating_sharp == 3  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_sharp == 4  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_sharp == 5 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star">>
+             <% else %>
+               <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% end %>
            </td>
-        </tr>
-      </table>
-    </div>
+ 
+           <td scope="row">
+             <% if appointment.review.rating_qualityprice == 1  %>
+               <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_qualityprice == 2 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif  appointment.review.rating_qualityprice == 3  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_qualityprice == 4  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_qualityprice == 5 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star">>
+             <% else %>
+               <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% end %>
+           </td>
+ 
+           <td scope="row">
+             <% if appointment.review.rating_facilities == 1  %>
+               <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_facilities == 2 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif  appointment.review.rating_facilities == 3  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_facilities == 4  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star">>
+             <% elsif appointment.review.rating_facilities == 5 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star">>
+             <% else %>
+               <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">>
+             <% end %></p>
+            </td>
+         </tr>
+       </table>
   <% else %>
     <p class='my-4'>Todavia no se han generado reviews</p>
   <% end %>
 </div>
-

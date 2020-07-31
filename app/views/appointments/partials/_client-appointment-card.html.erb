@@ -12,11 +12,11 @@
       <td scope="row"><%= appointment.appointment_date %></td>
       <td scope="row"><%= appointment.start_hour %>:00 hs.</td>
       <td scope="row"><%= appointment.status%>
-        <%# if Date.today > appointment.appointment_date && appointment.status == "Aceptada" %>
-          <%#= "Finalizada" %>
-        <%# else %>
-          <%#= appointment.status %>
-        <%# end %></td>
+        <% if Date.today > appointment.appointment_date && appointment.status == "Aceptada" %>
+          <%= "Finalizada" %>
+        <% else %>
+          <%= appointment.status %>
+        <% end %></td>
       <td scope="row">$ <%= appointment.session_price %>.00</td>             
     </tr>
   </table>
@@ -28,61 +28,83 @@
         <tr>
           <th scope="col">Puntualidad</th>
           <th scope="col">Precio/Calidad</th>
-          <th scope="col">Instalaciones</th>          
+          <th scope="col">Instalaciones</th>
         </tr>
         <tr>
           <td scope="row">
             <% if appointment.review.rating_sharp == 1  %>
-              <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_sharp == 2 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif  appointment.review.rating_sharp == 3  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_sharp == 4  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_sharp == 5 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% end %>
-          </td>
-
-          <td scope="row">
-            <% if appointment.review.rating_qualityprice == 1  %>
-              <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_qualityprice == 2 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif  appointment.review.rating_qualityprice == 3  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_qualityprice == 4  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_qualityprice == 5 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% end %>
-          </td>
-
-          <td scope="row">
-            <% if appointment.review.rating_facilities == 1  %>
-              <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_facilities == 2 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif  appointment.review.rating_facilities == 3  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_facilities == 4  %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-            <% elsif appointment.review.rating_facilities == 5 %>
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-            <% end %></p>
+               <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_sharp == 2 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif  appointment.review.rating_sharp == 3  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_sharp == 4  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_sharp == 5 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star">
+             <% else %>
+               <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% end %>
            </td>
-        </tr>
-      </table>
-    </div>
-    
+ 
+           <td scope="row">
+             <% if appointment.review.rating_qualityprice == 1  %>
+               <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_qualityprice == 2 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif  appointment.review.rating_qualityprice == 3  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_qualityprice == 4  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_qualityprice == 5 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star">
+             <% else %>
+               <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% end %>
+           </td>
+ 
+           <td scope="row">
+             <% if appointment.review.rating_facilities == 1  %>
+               <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_facilities == 2 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif  appointment.review.rating_facilities == 3  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_facilities == 4  %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star">
+             <% elsif appointment.review.rating_facilities == 5 %>
+               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star">
+             <% else %>
+               <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
+             <% end %></p>
+            </td>
+         </tr>
+       </table>
+   
     <% else %>
-    <%= link_to "Crear Review", new_appointment_review_path(appointment), class:"btn btn-success"  %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Appointmentmodal-<%=appointment.id%>">Crear Review</button>
+    <div class="modal fade" id="Appointmentmodal-<%=appointment.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= simple_form_for [appointment, @review] do |f| %>
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Crear Review</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                  <div class="modal-body">    
+                    <%= f.input :rating_sharp, collection: (1..5).to_a, label: "Puntualidad" %>
+                    <%= f.input :rating_qualityprice, collection: (1..5).to_a, label: "Precio/Calidad" %>
+                    <%= f.input :rating_facilities, collection: (1..5).to_a, label: "Instalaciones" %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <%= f.submit "Enviar", class:"btn btn-success" %>        
+                  </div>
+                </div>
+            <% end %>
+        </div>
+      </div>
   <% end %>
 </div>
