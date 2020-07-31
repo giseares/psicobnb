@@ -42,9 +42,9 @@
              <% else %>
                <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
              <% end %>
-           </td>
+          </td>
  
-           <td scope="row">
+          <td scope="row">
              <% if appointment.review.rating_qualityprice == 1  %>
                <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
              <% elsif appointment.review.rating_qualityprice == 2 %>
@@ -58,9 +58,9 @@
              <% else %>
                <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
              <% end %>
-           </td>
+          </td>
  
-           <td scope="row">
+          <td scope="row">
              <% if appointment.review.rating_facilities == 1  %>
                <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
              <% elsif appointment.review.rating_facilities == 2 %>
@@ -74,9 +74,9 @@
              <% else %>
                <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star">
              <% end %></p>
-            </td>
-         </tr>
-       </table>
+          </td>
+        </tr>
+      </table>
     </div>
   <% else %>
     <%if appointment.status == "Pendiente" %>
@@ -89,20 +89,20 @@
             <%= simple_form_for [appointment, @review] do |f| %>
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Crear Review</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div>
+                  <div class="modal-body">    
+                    <%= f.input :rating_sharp, collection: (1..5).to_a, label: "Puntualidad" %>
+                    <%= f.input :rating_qualityprice, collection: (1..5).to_a, label: "Precio/Calidad" %>
+                    <%= f.input :rating_facilities, collection: (1..5).to_a, label: "Instalaciones" %>
                   </div>
-                    <div class="modal-body">    
-                      <%= f.input :rating_sharp, collection: (1..5).to_a, label: "Puntualidad" %>
-                      <%= f.input :rating_qualityprice, collection: (1..5).to_a, label: "Precio/Calidad" %>
-                      <%= f.input :rating_facilities, collection: (1..5).to_a, label: "Instalaciones" %>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      <%= f.submit "Enviar", class:"btn btn-success" %>        
-                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <%= f.submit "Enviar", class:"btn btn-success" %>        
                   </div>
+                </div>
               </div>  
             <% end %>
           </div>
