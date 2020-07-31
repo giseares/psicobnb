@@ -11,12 +11,12 @@
       <td scope="row"><%= appointment.professional.first_name %></td>
       <td scope="row"><%= appointment.appointment_date %></td>
       <td scope="row"><%= appointment.start_hour %>:00 hs.</td>
-      <td scope="row">
-        <% if Date.today > appointment.appointment_date && appointment.status == "Aceptada" %>
-          <%= "Finalizada" %>
-        <% else %>
-          <%= appointment.status %>
-        <% end %></td>
+      <td scope="row"><%= appointment.status%>
+        <%# if Date.today > appointment.appointment_date && appointment.status == "Aceptada" %>
+          <%#= "Finalizada" %>
+        <%# else %>
+          <%#= appointment.status %>
+        <%# end %></td>
       <td scope="row">$ <%= appointment.session_price %>.00</td>             
     </tr>
   </table>

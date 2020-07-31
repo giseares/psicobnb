@@ -21,13 +21,19 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.client_id = current_user.id
-    @appointment.professional_id = params[:user_id]
+    @user = User.find(params[:user_id])
+    @marker =
+    [{
+      lat: @user.latitude,
+      lng: @user.longitude
+    }]
+    @appointment.professional = @user
     @appointment.status = "Pendiente"
     @appointment.session_price = Profile.find_by(user_id: params[:user_id]).price
-    if @appointment.save!
+    if @appointment.save
       redirect_to appointments_path(params[:professional_id])
     else
-      render :new
+      render "users/show"
     end
     authorize @appointment
   end

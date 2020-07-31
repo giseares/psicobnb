@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :reviews, through: :reservations
   after_create :create_profile
   has_one_attached :photo
+  has_one :profile
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
