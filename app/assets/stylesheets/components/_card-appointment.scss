@@ -1,10 +1,37 @@
 
 .card-appointment{
   background-color: white;
-  padding: 30px;
-  border-radius: 4px;
+  padding: 30px 30px 15px 30px;
+  border-radius: 8px;
   box-shadow: 0 10px 30px (0,0,0,0.8);
   margin: 20px;
+  height: auto;
+
 }
 
-  
+#title{
+  padding: 30px;
+}
+
+
+.fas{
+  color: #edb867;
+}
+
+.far{
+  color: #f4f4f4;
+}
+
+#app-index{
+  text-align: center;
+  margin: 0;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px (0,0,0,0.8);
+  background-color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.td{
+  padding-bottom: 0px;
+}
