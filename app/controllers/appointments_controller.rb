@@ -3,9 +3,9 @@ class AppointmentsController < ApplicationController
 
   def index
     if current_user.professional?
-      @appointments = policy_scope(current_user.reservations)
+      @appointments = policy_scope(current_user.reservations.order(status: :desc))
     else
-      @appointments = policy_scope(current_user.appointments)
+      @appointments = policy_scope(current_user.appointments.order(status: :asc))
     end
     @review = Review.new
   end

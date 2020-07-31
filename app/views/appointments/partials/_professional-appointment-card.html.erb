@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <td scope="row"><%= appointment.client.first_name %></td>
-      <td scope="row"><%= appointment.appointment_date %></td>
+      <td scope="row"><%= appointment.appointment_date.strftime("%d-%m-%Y") %></td>
       <td scope="row"><%= appointment.start_hour %>:00 hs.</td>
       <td scope="row"><%= appointment.status %></td>
       <td scope="row">$<%= appointment.session_price %>.00</td>          
