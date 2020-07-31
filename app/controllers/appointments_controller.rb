@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
     else
       @appointments = policy_scope(current_user.appointments)
     end
+    @review = Review.new
   end
 
   def show
