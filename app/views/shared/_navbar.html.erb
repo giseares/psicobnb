@@ -16,6 +16,17 @@
             <%#= cl_image_tag current_user.photo.key, class: "avatar-large" %>
           <%end%>
         </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mi Cuenta
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/appointments">Mis Terapias</a>
+          <div class="dropdown-divider"></div>
+          <%#= <a class="dropdown-item" href="#">Perfil</a> %>
+        </div>
+      </li>
+
         <li class="nav-item">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
