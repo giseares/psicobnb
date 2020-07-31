@@ -29,7 +29,7 @@
           <span><%= "*" * appointment.review.rating_sharp  %></span>
         <% else %>
           <%= link_to "Crear Review", new_appointment_review_path(appointment)  %>
-        <% end %>%>
+        <% end %>
         <h4>Profesional:</h4>
         </h3><%= appointment.professional.first_name %></h3>
         <h4>Fecha:</h4>
