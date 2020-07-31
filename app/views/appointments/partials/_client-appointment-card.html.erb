@@ -1,7 +1,7 @@
 <div class="card-appointment">      
   <table class="table text-center">
     <tr>
-      <th scope="col">Profesional:</th>
+      <th scope="col">Profesional</th>
       <th scope="col">Fecha</th>
       <th scope="col">Hora</th>
       <th scope="col">Estado</th>
@@ -22,7 +22,9 @@
   </table>
 
   <% if appointment.review.present? %>
-    <table class="table text-center">
+    <div class="my-4">
+      <h4 class="text-center"><strong>Reviews:</strong></h4>
+      <table class="table text-center">
         <tr>
           <th scope="col">Puntualidad</th>
           <th scope="col">Precio/Calidad</th>

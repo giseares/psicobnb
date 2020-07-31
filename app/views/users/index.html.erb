@@ -1,9 +1,6 @@
 <div class='navbar-lewagon'>
 <%= content_for(:navbar_class, "navbar-home") %>
 </div>
-<div class="container p-5">
-  <h2>Hola! <%#= current_user.first_name%> <%#= current_user.last_name%></h2>
-</div>
 <form class="simple_form user m-3" action="/users" method="get">
   <div class="input string required user_name">
     <label class="string required" for="user_name">Escuela</label>
@@ -13,29 +10,43 @@
     <input type="submit" value="Filtrar" class="btn btn-success">
   </div>
 </form>
-<div class="mx-4">  
+<div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="col-md-6">
       <%@users.each do |psico|%>
-        <%= link_to user_path(psico.id),{:style=>'text-decoration:none;', :class => "one"} do %>
-        <div class="card-product m-2">
-          <%= cl_image_tag psico.photo.key, class: "rounded" %>
-          <div class="card-product-infos">
-            <h1><%=psico.first_name%> <%=psico.last_name%></h1>
-            <h5>Celular: <%=psico.cel_phone%></h5>
-            <h5>Direccion: <%=psico.address%></h5>
+          <%= link_to user_path(psico.id),{:style=>'text-decoration:none;', :class => "one"} do %>
+          <div class="card-product d-flex flex-row m-4">
+            <div class="card-product-photo">
+              <%= cl_image_tag psico.photo.key %>
+            </div>
+            <div class="card-product-body flex-grow-1 ">
+              <h2><%=psico.first_name%> <%=psico.last_name%></h2>
+              <p>Especialidad en <%= Profile.find(psico.id).speciality %></p>
+              <p>Escuela de pensamiento <%= Profile.find(psico.id).school %></p>
+              <h5>Contacto <%=psico.cel_phone%></h5>
+            </div>
+            <div class="card-product-info flex-shrink-1 align-self-end ">
+              <div class="d-flex flex-column align-items-end ">
+                <% if psico.reviews.count > 0  %>
+                <p>*<%= psico.reviews.average(:rating_sharp).round(1) %>(<%= psico.reviews.count %>) </p>
+                <% end %>
+                <p>Precio por sesion <strong><%= Profile.find(psico.id).price %>$</strong></p>
+              </div>
+            </div>
           </div>
-        </div>
-        <%end%>
+          <%end%>
       <%end%>
     </div>
-    <div class="mapa sticky-top">
-      <div id="map" class="col"
-          style="width: 100%; height: 600px;"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="col-md-6 d-none d-md-block ">
+      <div class="sticky-top">
+        <div id="map"
+            style="width: 100%; height: 600px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<%console%>

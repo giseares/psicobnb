@@ -1,45 +1,53 @@
 .card-product {
   overflow: hidden;
-  height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin: 0;
 }
 
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product h1 {
-  font-size: 30px;
+.card-product h2 {
+  font-size: 25px;
   font-weight: bold;
-  color: #f65c78;
-  margin: 4px;
+  color: #3A3C42;
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
+  color: #3A3C42;
+}
+.card-product-photo{
+  height: auto;
+  min-height: 150px;
+  width: 150px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.card-product-photo img{
+  height: 100%;
+  width: 100%;
+}
+
+.card-product-body{
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.card-product-info {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.card-product-info p{
+  font-size: 16px;
+  line-height: 1.4;
+  color: #3A3C42;
 }
 
 .card-product h5 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #a78a4b;
-  margin: 4px;
-}
-
-.mapa {
-  width: 40%;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 5px;
+  margin-top: 6px;
+  color: #5e616b;
 }
