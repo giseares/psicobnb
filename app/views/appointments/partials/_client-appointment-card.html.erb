@@ -6,18 +6,15 @@
       <th scope="col">Hora</th>
       <th scope="col">Estado</th>
       <th scope="col">Honorarios</th>
+      <th scope="col">Direccion</th>
     </tr>
     <tr>
       <td scope="row"><%= appointment.professional.first_name %></td>
-      <td scope="row"><%= appointment.appointment_date %></td>
+      <td scope="row"><%= appointment.appointment_date.strftime("%d-%m-%Y") %></td>
       <td scope="row"><%= appointment.start_hour %>:00 hs.</td>
-      <td scope="row"><%= appointment.status%>
-        <%# if Date.today > appointment.appointment_date && appointment.status == "Aceptada" %>
-          <%#= "Finalizada" %>
-        <%# else %>
-          <%#= appointment.status %>
-        <%# end %></td>
-      <td scope="row">$ <%= appointment.session_price %>.00</td>             
+      <td scope="row"><%= appointment.status%></td>
+      <td scope="row">$ <%= appointment.session_price %>.00</td>
+      <td scope="row"> <%= appointment.professional.address %></td>             
     </tr>
   </table>
 

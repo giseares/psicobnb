@@ -17,7 +17,7 @@
           <% end %>
           <%= cl_image_tag @user.photo.key, class: "avatar-square" %>
           <br>
-          <h4>Reviews: </h4>
+          <p> </p>
         </div>
         <div class="col-8">
           <ul class="list-group list-group-flush ">
@@ -27,6 +27,10 @@
             <li class="list-group-item">Especialidad: <%=@user.profile.speciality%></li>
             <li class="list-group-item">Nro de Matricula: <%=@user.profile.license_number%></li>
             <li class="list-group-item">Precio: $ <%=@user.profile.price%>.00</li>
+             <% if current_user.present? %>
+              <li class="list-group-item">Domicilio: <%=@user.address%></li>
+            <% end %>
+            <li class="list-group-item">Rating: <%= @user.reviews.average(:rating_sharp).round(1) %> ⭐ (<%= @user.reviews.count %>)</li>
           </ul>
         </div>
         <div class="container">
@@ -48,7 +52,7 @@
 
       <%else%>
       <div class="col-4 my-5">
-        <%= link_to "Reservar una cita", new_user_appointment_path(@user), class:'btn btn-success' %>
+        <%= link_to "Login para reservar!", new_user_session_path, class:'btn btn-success' %>
         <%= link_to "Volver", users_path, class:'btn btn-secondary' %>
       <%end%>
       </div>
