@@ -28,7 +28,7 @@
             <div class="card-product-info flex-shrink-1 align-self-end ">
               <div class="d-flex flex-column align-items-end ">
                 <% if psico.reviews.count > 0  %>
-                <p>Rating: *<%= psico.reviews.average(:rating_sharp).round(1) %> de consultas: <%= psico.reviews.count %> </p>
+                <p>Rating: <%= psico.reviews.average(:rating_sharp).round(1) %> ⭐ (<%= psico.reviews.count %>) </p>
                 <% end %>
                 <p>Precio por sesion <strong><%= Profile.find(psico.id).price %>$</strong></p>
               </div>
