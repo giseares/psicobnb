@@ -21,7 +21,7 @@
     </tr>
   </table>
   <%= simple_form_for(appointment) do |f| %> 
-
+    <% if appointment.status == "Pendiente" %>
       <%= f.input :status, collection: %w[Aceptada Rechazada], include_blank: false ,label: "Elija nuevo Status"  %>
       <%= f.submit class:"btn btn-dark" %>
     <% else %>
