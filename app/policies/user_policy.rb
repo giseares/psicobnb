@@ -6,14 +6,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user == record
+    true
   end
 
   def create?
     return false
-  end
-
-  def profile?
-    user == record
   end
 end

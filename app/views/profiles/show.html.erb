@@ -1,0 +1,63 @@
+<h1>Datos personales</h1>
+
+<%= simple_form_for(@user, url: registration_path(@user), html: { method: :patch }) do |t| %>
+  <%= t.input :email, required: true, autofocus: true %>
+  <%= t.input :first_name,
+                required: false,
+                input_html: { autocomplete: "new-first-name" } %>
+
+  <%= t.input :last_name,
+                required: false,
+                input_html: { autocomplete: "new-last-name" } %>
+
+  <%= t.input :dni,
+                required: false,
+                input_html: { autocomplete: "new-dni" } %>
+  
+  <%= t.input :address,
+                required: false,
+                input_html: { autocomplete: "new-address" } %>
+  
+  <%= t.input :cel_phone,
+                required: false,
+                input_html: { autocomplete: "new-cel_phone" } %>
+  
+  <%= t.input :password,
+                hint: "leave it blank if you don't want to change it",
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+
+  <%= t.input :password_confirmation,
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+  <%= t.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+
+  <%= t.submit %>
+<% end %>
+
+  <% if @user.professional %>
+
+  <h1>Perfil Profesional</h1>
+
+  <%= simple_form_for( @profile, url: user_profile_path(@user), html: { method: :patch }) do |t| %>
+  <%= t.input :school,
+                required: false,
+                input_html: { autocomplete: "new-school" } %>
+
+  <%= t.input :license_number,
+                required: false,
+                input_html: { autocomplete: "new-license-number" } %>
+
+  <%= t.input :speciality,
+                required: false,
+                input_html: { autocomplete: "new-speciality" } %>
+  
+  <%= t.input :price,
+                required: false,
+                input_html: { autocomplete: "new-price" } %>
+  <%= t.submit %>
+  <% end %>
+<% end %>

@@ -1,37 +1,3 @@
-<div class="container display: flex" >
-  <div class="card-group">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Lic: <%= @user.first_name %> </h1>
-      <div class="card">
-        <img image_tag  src="../images/team-1.jpg/100px180/" class= "avatar-large " alt="avatar">
-        <p class="card-text"><%= @user.license_number%></p>
-        <p class="card-text"><%= @user.price%></p>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">School</h5>
-          <p class="card-text"><%= @user.profile.school %></p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Speciality</h5>
-          <p class="card-text"><%= @user.profile.speciality %></p>
-        </div>
-      </div>
-    </div>  
-  </div>
-
-  <div class="container">
-    <h1> Schedule your Appointment </h1>
-    <i class="far fa-calendar-alt"></i>
-    <%= simple_form_for([@user, @appointment]) do |f| %> 
-      <%= f.input :appointment_date, wrapper_html: { class: 'flex-select' }, as: :date, html5: true %>   
-      <!-- deplegable de horios-->
-      <%= f.input :start_hour  %>
-      <%= f.submit class:"btn btn-dark" %>
-    <% end %>
-  </div>
-
-
+<div class="container display: flex">
+  <h2>Mi listado </h2>
 </div>

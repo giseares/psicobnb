@@ -1,4 +1,61 @@
-<h1>User#show</h1>
-<h1>Bienvenido <%= @user.email %></h1>
+<div class="banner-map">
+  <div id="map" class="col"
+    style="width: 100%; height: 200px; objet_fit: cover ;"
+    data-markers="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+<div class="">
+  <div class="m-3 ">
+    <div class="row">
+      <div class="col-7 row m-3 flash ">
+        <h1>Informacion del profesional:  <%=@user.first_name.capitalize%></h1> 
+        <div class="col-4">
+          <br>
+          <% if policy(@user.profile).show? %>
+          <% link_to "Editar perfil profesional", user_profile_path(@user) %>
+          <% end %>
+          <%= cl_image_tag @user.photo.key, class: "avatar-square" %>
+          <br>
+          <p> </p>
+        </div>
+        <div class="col-8">
+          <ul class="list-group list-group-flush ">
+            <li class="list-group-item border-bottom-0"><h3>Nombre: <%=@user.first_name.capitalize%> </h3>
+            <li class="list-group-item"><h3>Apellido <%=@user.last_name.capitalize%></li></h3>
+            <li class="list-group-item">Escuela de pensamiento: <%=@user.profile.school%></li>
+            <li class="list-group-item">Especialidad: <%=@user.profile.speciality%></li>
+            <li class="list-group-item">Nro de Matricula: <%=@user.profile.license_number%></li>
+            <li class="list-group-item">Precio: $ <%=@user.profile.price%>.00</li>
+             <% if current_user.present? %>
+              <li class="list-group-item">Domicilio: <%=@user.address%></li>
+            <% end %>
+            <li class="list-group-item">Rating: <%= @user.reviews.average(:rating_sharp).round(1) %> ⭐ (<%= @user.reviews.count %>)</li>
+          </ul>
+        </div>
+        <div class="container">
+          <%= link_to "Volver", users_path, class:'btn btn-secondary' %>
+        </div>
+      </div>
+      <% if current_user.present? %>
+      <div class="col-4" style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
+        <h1> Reserva tu cita: <h1>
+        <%= simple_form_for([@user, @appointment]) do |f| %> 
+            <%= f.input :appointment_date, label: "Elija el dia", wrapper_html: { class: 'flex-select' }, as: :date, html5: true %>   
+            <!-- deplegable de horios-->
+            <%= f.input :start_hour, collection: (9..20).to_a, label: "Elija el horario"  %>
+            <% puts f.input :appointment_date %>
+            <%= f.submit class:'btn btn-success' %>
+          <% end %>
+        <%= link_to "Lista de citas", appointments_path, class:"btn btn-dark" , style: 'display:fixed;' %>
+      </div>
 
-<%= link_to "Completar perfil", user_profile_path(@user) %>
+      <%else%>
+      <div class="col-4 my-5">
+        <%= link_to "Login para reservar!", new_user_session_path, class:'btn btn-success' %>
+        <%= link_to "Volver", users_path, class:'btn btn-secondary' %>
+      <%end%>
+      </div>
+    </div>
+  </div>
+</div>

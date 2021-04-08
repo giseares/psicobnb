@@ -1,9 +1,50 @@
-<h1>Hola!</h1>
-<h2>Aqui tienes todos los psicos:</h2>
-<%@users.each do |psico|%>
-    <div class="card m-2 p-2">
-    <h1><%=psico.first_name%> <%=psico.last_name%></h1>
-    <p><%=psico.cel_phone%></p>
-    <p><%=psico.address%></p>
+<div class='navbar-lewagon'>
+<%= content_for(:navbar_class, "navbar-home") %>
+</div>
+<form class="simple_form user m-3" action="/users" method="get">
+  <div class="input string required user_name">
+    <label class="string required" for="user_name">Escuela</label>
+    <input class="string required" type="text" name="school" id="school_keys" />
+    <label class="string required" for="user_name">Especialidad</label>
+    <input class="string required" type="text" name="speciality" id="school_keys" />
+    <input type="submit" value="Filtrar" class="btn btn-success">
+  </div>
+</form>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <%@users.each do |psico|%>
+          <%= link_to user_path(psico.id),{:style=>'text-decoration:none;', :class => "one"} do %>
+          <div class="card-product d-flex flex-row m-4">
+            <div class="card-product-photo">
+              <%= cl_image_tag psico.photo.key %>
+            </div>
+            <div class="card-product-body flex-grow-1 ">
+              <h2><%=psico.first_name%> <%=psico.last_name%></h2>
+              <p>Especialidad en <%= Profile.find(psico.id).speciality %></p>
+              <p>Escuela de pensamiento <%= Profile.find(psico.id).school %></p>
+              <h5>Contacto <%=psico.cel_phone%></h5>
+            </div>
+            <div class="card-product-info flex-shrink-1 align-self-end ">
+              <div class="d-flex flex-column align-items-end ">
+                <% if psico.reviews.count > 0  %>
+                <p>Rating: <%= psico.reviews.average(:rating_sharp).round(1) %> ⭐ (<%= psico.reviews.count %>) </p>
+                <% end %>
+                <p>Precio por sesion <strong><%= Profile.find(psico.id).price %>$</strong></p>
+              </div>
+            </div>
+          </div>
+          <%end%>
+      <%end%>
     </div>
-<%end%>
+    <div class="col-md-6 d-none d-md-block ">
+      <div class="sticky-top">
+        <div id="map"
+            style="width: 100%; height: 600px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

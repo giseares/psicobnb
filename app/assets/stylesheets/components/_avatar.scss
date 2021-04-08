@@ -3,8 +3,8 @@
   border-radius: 50%;
 }
 .avatar-large {
-  width: 56px;
-  border-radius: 50%;
+  width: 48px;
+  border-radius: 55%;
 }
 .avatar-bordered {
   width: 40px;
@@ -13,8 +13,8 @@
   border: white 1px solid;
 }
 .avatar-square {
-  width: 40px;
-  border-radius: 0px;
+  width: 100px;
+  border-radius: 8px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+  border: rgba(51, 255, 0, 0.3) 1px solid;
 }

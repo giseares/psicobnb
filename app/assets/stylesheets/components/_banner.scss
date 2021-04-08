@@ -1,0 +1,46 @@
+.banner {
+  height: 45vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  width:auto;
+  max-width: 100%;  
+
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+  }
+  p {
+    color: white;
+    opacity: .8;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+  }
+  #btn1 {
+    padding: 15px 50px;
+    margin-top: 20px;
+    opacity: 0.8;
+    border-radius: 8px;
+  }
+
+  #query{
+    opacity: 0.7;
+    height: 45px;
+    border-radius: 8px;
+  }
+
+  #query:hover{
+    opacity: 0.9;
+  }
+
+}
+
+.banner-map {
+  object-fit: cover;
+  background-size: cover ;
+}
